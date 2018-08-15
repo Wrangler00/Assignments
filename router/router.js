@@ -118,10 +118,16 @@ router.post('/saveLeave',restricted,(req,res)=>{
 	var payload = req.body;
 	var startDate = payload.startDate;
 	var endDate = payload.endDate;
+	var totDays = countAllDays(startDate,endDate);
+
+	if(totDays >15){
+		console.log(totDays);
+		return res.render('leave.html',{error:"Date range cant be more than 15 days"});
+	}
 	
 	Promise.all([countWeekendDays(startDate,endDate),countPublicHolidays(startDate,endDate)]).then((data)=>{
 		var holidays = data[0]+data[1];
-		payload.totalWorkDays = countAllDays(startDate,endDate)-holidays;
+		payload.totalWorkDays = totDays-holidays;
 		payload.empId = req.session.empId
 		return dbHandler.saveLeave(payload);
 	}).then(result=>{

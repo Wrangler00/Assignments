@@ -5,6 +5,11 @@
 </head>
 <body>
 	<h1>Apply Leave</h1>
+	<% if(locals.error){ %>
+		<script>
+			alert("<%=locals.error%>");
+		</script>
+	<% } %>
 	<form method="post" action="/saveLeave">
 		From: <input type="date" name="startDate" required>
 		----
