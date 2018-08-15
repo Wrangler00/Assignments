@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Apply Leave</title>
+</head>
+<body>
+	<h1>Apply Leave</h1>
+	<form method="post" action="/saveLeave">
+		From: <input type="date" name="startDate" required>
+		----
+		Till: <input type="date" name="endDate" required><br>
+		Reason: <input type="text" name="reason" required><br>
+		<input type="submit" name="submit">
+	</form>
+
+	<a href="/logout"></a>
+</body>
+</html>

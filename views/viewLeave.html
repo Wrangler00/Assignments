@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leave</title>
+</head>
+<body>
+	<h1>Leave status</h1>
+	<%  if(locals.leaves.length>0){ %>
+		<table style="width:100%;text-align: center;">
+		<% if(!locals.profile){ %>
+			<tr>
+			    <th>Start Date</th>
+			    <th>End Date</th>
+			    <th>Working Days</th>
+			    <th>Reason</th>
+			    <th>Status</th>
+			</tr>
+			<% for(var i=0;i< locals.leaves.length ; i++){%>
+				<tr>
+					<td><%= locals.leaves[i].startDate%></td>
+					<td><%= locals.leaves[i].endDate%></td>
+					<td><%= locals.leaves[i].totalDays%></td>
+					<td><%= locals.leaves[i].reason%></td>
+					<td><%= locals.leaves[i].status%></td>
+				</tr>
+			<% } %>
+			
+		<% }else{ %>
+			<tr>
+				<th>Employee Id</th>
+			    <th>Start Date</th>
+			    <th>End Date</th>
+			    <th>Working Days</th>
+			    <th>Reason</th>
+			    <th>Status</th>
+			</tr>
+			<% for(var i=0;i< locals.leaves.length ; i++){%>
+				<tr>
+					<td><%= locals.leaves[i].empId%></td>
+					<td><%= locals.leaves[i].startDate%></td>
+					<td><%= locals.leaves[i].endDate%></td>
+					<td><%= locals.leaves[i].totalDays%></td>
+					<td><%= locals.leaves[i].reason%></td>
+					<% if(locals.leaves[i].status != "pending"){ %>
+						<td><%= locals.leaves[i].status%></td>
+					<% }else{ %>
+						<td>
+							<a href="/updateStatus?leveID=<%= locals.leaves[i].leveID%>&status=accept"><button>Accept</button></a>
+							<a href="/updateStatus?leveID=<%= locals.leaves[i].leveID%>&status=reject"><button>Reject</button></a>
+						</td>
+					<% } %>
+				</tr>
+			<% } %>
+		<% } %>
+		</table>
+	<% }else{ %>
+		<h2>
+			No leaves have been requested
+		</h2>
+	<% } %>
+	<% if(!locals.profile){ %><a href="/saveLeave">Request Leave</a><% } %>
+
+	<a href="/logout"></a>
+</body>
+</html>

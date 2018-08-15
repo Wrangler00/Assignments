@@ -1,0 +1,26 @@
+{
+  "name": "novanetassignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "Abhishek",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "http": "0.0.0",
+    "memorystore": "^1.6.0",
+    "mongodb": "^3.1.1",
+    "mongoose": "^5.2.7",
+    "mysql": "^2.16.0",
+    "node-holidayapi": "^1.0.2",
+    "path": "^0.12.7",
+    "url": "^0.11.0"
+  }
+}
